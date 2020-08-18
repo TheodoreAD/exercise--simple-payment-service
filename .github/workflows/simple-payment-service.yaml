@@ -1,8 +1,7 @@
 name: Simple Payment Service
 
 on:
-  push:
-  pull_request:
+  push
 
 jobs:
   lint-format:
@@ -10,10 +9,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
+        pip install requirements-test.txt
         make format-check
         make lint
   test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: make test
+    - run: |
+        make install-dev
+        make test
