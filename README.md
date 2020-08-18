@@ -69,3 +69,7 @@ Body:
 - ExpirationDate: mm-yyyy formatted date
 - SecurityCode: three digit number
 - Amount: positive decimal
+
+## Pipelines
+
+Github Actions are used to run pipelines for formatting, linting and testing.
