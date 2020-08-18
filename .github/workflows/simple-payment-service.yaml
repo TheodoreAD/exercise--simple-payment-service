@@ -2,11 +2,7 @@ name: Simple Payment Service
 
 on:
   push:
-    branches:
-    - main
   pull_request:
-    branches:
-    - main
 
 jobs:
   lint-format:
