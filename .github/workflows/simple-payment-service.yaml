@@ -1,21 +1,19 @@
 name: Simple Payment Service
-
 on:
   push
-
 jobs:
-  lint-format:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: |
-        pip install requirements-test.txt
-        make format-check
-        make lint
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - run: |
-        make install-dev
-        make test
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+    - name: Install tool requirements
+      run: pip install -r requirements-test.txt
+    - name: Install app
+      run: make install
+    - name: Lint and format
+      run: make format-check lint
+    - name: test
+      run: make test
